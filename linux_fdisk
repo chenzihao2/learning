@@ -1,0 +1,26 @@
+查看当前分区情况
+fdisk -l
+
+添加分区
+fdisk /dev/sda
+n新分区
+p查看
+w保存
+
+重启或者partprobe实现更新、
+
+
+
+格式化新的分区
+mkfs.ext4 /dev/sda3
+
+将分区挂载到空目录上
+mount /dev/sda3/ dir
+
+
+开机自动挂载
+vim /etc/fstab
+
+/dev/sda3/  /home/chenzihao/lib ext4    defaults    0  0
+
+

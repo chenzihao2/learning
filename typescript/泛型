@@ -1,0 +1,30 @@
+T表示泛型 具体的类型在调用这个方法的时候决定
+function getData<T>(value:T):T{
+    return value;
+}
+
+getData(string)('123');
+
+class minClass<T> {
+    public list:T[] = [];                                     
+    add(num:number){
+        this.list.push(num);
+    }   
+    min():number{
+        var minNum = this.list[0];
+        for(var i=1; i < this.list.length; i++) {
+            if (minNum > this.list[i]) {
+                minNum = this.list[i];
+            }   
+        }   
+
+        return minNum;
+    }   
+}
+var m = new minClass();
+m.add(1);
+m.add(10);
+m.add(100);
+m.add(12);
+console.log(m.min());
+~                      

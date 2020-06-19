@@ -1,0 +1,25 @@
+linux目录介绍
+/bin    二进制可执行文件
+/etc    配置文件
+/home   用户家目录
+/usr    系统应用目录
+/usr/local/     管理员安装的软件目录
+/proc   虚拟文件系统目录，系统内存的映射
+/dev    设备文件目录
+/boot   系统引导文件
+/lib    系统运行时用到的公开库文件
+
+
+linux文件类型
+类型            类型标记
+普通文件        - 
+目录文件        d
+符号链接        l
+套接字          s
+设备文件        c || b
+
+
+文件系统类型
+fat         windows使用的文件系统
+ntfs        windowsNT环境的文件系统 取代fat
+ext         linux使用的文件系统

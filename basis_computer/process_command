@@ -1,0 +1,11 @@
+#ps
+
+ps -u www  列举www用户的进程
+pstree 查看进程树 父子进程
+ps -aux  --sort=-pcpu 按照cpu使用比例排序
+ps -aux  --sort=-pmem 按照内存使用比例排序
+
+
+#top
+
+

@@ -1,0 +1,35 @@
+nginx 变量
+
+
+只能存放字符串
+
+
+
+####自定义变量
+set $var hello
+echo $var
+
+特殊符号变量 例如$
+ngx_geo 标准模块
+http {
+    ...
+    geo $dollar {
+        default "$";
+    }
+    server {
+        ...
+        
+        location /test-dollar {
+            echo "This is a dollar sign: $dollar";
+        }
+    }
+}
+
+特殊情况 当变量名和后续字符串紧密连接的时候
+使用  ${var}string
+
+
+####内建变量
+$uri  获取当前请求的uri 解码且不含参数
+$request_uri  获取请求最原始的uri
+$arg_xxx  获取请求参数的值

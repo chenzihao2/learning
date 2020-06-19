@@ -1,0 +1,15 @@
+centos7 ctags 安装 
+
+yum install ctags
+
+
+
+ctags -R 目录下生成tags文件
+
+
+ctags && vim 
+
+配置vimrc
+
+set tags=tags;
+set autochdir

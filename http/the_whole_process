@@ -1,0 +1,13 @@
+start 
+
+redirect  域名是否有重定向
+
+cache   是否有缓存或者缓存已过期
+
+dns     域名dns解析对应服务器IP
+
+tcp     与对应服务器ip创建tcp连接
+
+request 代理服务器接收请求
+
+response 返回响应

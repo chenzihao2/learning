@@ -1,0 +1,6 @@
+cnpm install -g supervisor
+
+supervisor node.js
+
+
+只要修改代码就重启服务器

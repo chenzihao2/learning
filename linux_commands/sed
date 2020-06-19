@@ -1,0 +1,4 @@
+sed -i 's/a/b/g'  filename 
+替换
+
+grep -rl str | xargs sed -i 's/str/ss/g'

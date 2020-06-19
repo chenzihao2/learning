@@ -1,0 +1,20 @@
+安装 Vundle
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+配置vimrc
+" ----------------------------- Vundle Start -----------------------------
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+call vundle#end()
+filetype plugin indent on
+" ----------------------------- Vundle End   -----------------------------"
+
+:PluginInstall 安装配置好的插件
+:PluginClean 清理不在配置范围内的插件
+:PluginUpdate 更新插件
+:PluginSearch  查找插件

@@ -1,0 +1,35 @@
+ES5 中的！
+function Person() {
+    this.name = 'czh';
+    this.run() = function() {
+        console.log(this.name);
+    }
+}
+
+原型链
+Person.prototype.sex = "man";
+原型链上的属性会被多个实例共享
+
+$p = new Person();
+
+Person.getInfo = function() {
+
+} //静态方法
+
+
+继承
+
+
+原型链+对象冒充
+function Web(par1, par2) {
+    Person.call(this, par1, par2);  对象冒充
+}
+var w = new Web();
+w.run() //right
+w.sex //wrong   不能继承父类的原型链
+
+
+
+原型链继承
+Web.prototype = new Person(); //都可以继承 
+//缺点是 实例化子类的时候没法给子类传参

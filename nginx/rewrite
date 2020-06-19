@@ -1,0 +1,73 @@
+基本语法
+        正则匹配   重写后的地址
+rewrite regex replacement [flag];
+
+
+四个flag
+
+last 停止rewrite指令 替换成新的uri开始下一轮location   一般用于server模块
+
+break  停止rewrite, 停止location 直接访问新的uri   一般用于location模块
+
+redirect  浏览器发起302跳转
+
+permanent 永久301重定向
+如果replacement中包含请求参数，那么默认情况下旧URI中的请求参数也会拼接在replacement后面作为新的URI，如果不想这么做，可以在replacement的最后面加上?。
+举例说明：
+rewrite ^/users/(.*)$ /show?user=$1? last;
+这样的新URI还是 /show?user=xxx
+但如果不加问号：
+rewrite ^/users/(.*)$ /show?user=$1 last;
+得到的新URI就是/show?user=$1&xxx=xxx。其中xxx=xxx是旧URI所带的请求参数。
+
+
+
+使用实例
+
+
+server {
+    ...
+    rewrite ^(/download/.*)/media/(.*)\..*$ $1/mp3/$2.mp3 last;
+    rewrite ^(/download/.*)/audio/(.*)\..*$ $1/mp3/$2.ra  last;
+    return  403; #没有匹配上，那就返回403咯
+    ...
+}
+注意，在server中使用rewrite ，我们使用的flag是last，但是在location中，我们却只能用break：
+
+location /download/ {
+    rewrite ^(/download/.*)/media/(.*)\..*$ $1/mp3/$2.mp3 break;
+    rewrite ^(/download/.*)/audio/(.*)\..*$ $1/mp3/$2.ra  break;
+    return  403;
+}
+
+
+if 条件
+
+变量$var通过"="或者"!="与字符串相比较，即$var = xxx或者$var != xxx
+
+if ($var ~ regex)正则大小写敏感匹配
+if ($var ~* regex)正则大小写不敏感匹配
+
+四种校验文件运算符
+-f  是否是文件
+-d  是否是目录
+-e  是否是文件或者目录这么连接
+-x  是否是可执行文件
+
+
+
+
+return  
+
+return的参数有四种形式：
+
+return code 此时，响应内容就是nginx所默认的，比如503 Service Temporarily Unavailable； 如果是444那就直接关闭TCP连接，也可以是其他值(644等)，但是没啥意义
+return code text 因为要带响应内容，因此code不能是具有跳转功能的30x
+return code URL 此时URI可以为URI做内部跳转，也可以是具有“http://”或者“https://”等协议的绝对URL，直接返回客户端，而code是30x(301, 302, 303, 307,308)
+return URL 此时code默认为302，而URL必须是带“http://”等协议的绝对URL
+
+
+
+
+日志开启
+rewrite_log on

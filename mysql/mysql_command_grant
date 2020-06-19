@@ -1,0 +1,15 @@
+grant 为用户分配权限
+
+grant 权限 on 数据库对象 to 用户@ip
+
+赋予所有的权限在所有的库的表上给用户root通过任何的ip连接密码为123456
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+
+收回权限
+revoke all on *.* from user@ip;
+
+赋予给能给其他用户赋予权限的能力
+with grant option
+
+grant 普通数据用户，查询、插入、更新、删除 数据库中所有表数据的权利
+grant select, insert, update, delete on testdb.* to common_user@'%'

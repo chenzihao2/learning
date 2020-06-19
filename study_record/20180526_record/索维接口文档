@@ -1,0 +1,46 @@
+1， 初始化接口
+  /api/suowei/Initialize
+  参数
+  org_id  机构ID
+  shot_time 拍摄次数
+  ai_time   ai次数
+  返回值
+  失败   余额不足 或者  数据同步失败时  会返回  nu_token   客户端只需再次发送此 nu_token 即可尝试将未同步成功的数据再次提交
+  成功   无返回值
+
+2，上传分析接口
+   /api/suowei/Analyze
+   参数
+   third_id     必须
+   img_urls     图片链接   多个图片逗号分隔   必须
+   appid        机构appid      必须
+   salt         盐    必须
+   sign         唯一标识 必须
+   gender       患者性别    非必须
+   age          患者年龄    非必须
+   user_id      上传的用户ID   必须
+   name         患者姓名     非必须
+   phone        患者电话     非必须
+   
+   具体参数对应这个方法
+   function pack_http_parameter($urls, $name) {
+       $third_id = (string) APP_ID . '_' . USER_ID . $name;
+       $data = [];
+       $data['third_id'] = $third_id;
+       $data['img_urls'] = implode(',', $urls);
+       $data['appid'] = APP_ID;
+       $data['salt'] = substr(md5(APP_ID), 2, 5);
+       $data['sign'] = md5(APP_ID . $data['salt'] . APP_KEY . date('Y-m-d'));
+       $data["gender"] = 0;
+       $data["age"] = 0;
+       $data["user_id"] = USER_ID;
+       $data["name"] = $name;
+       $data["phone"] = '';
+       return $data;
+   }
+   
+   返回值
+   成功 返回对应检查单的url
+   重复提交  会返回补充检查单信息的url
+   失败     会返回对应错误信息
+   

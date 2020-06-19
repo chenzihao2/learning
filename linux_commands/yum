@@ -1,0 +1,14 @@
+查看包是否已安装
+yum list pcre
+
+安装包
+yum install pcre
+
+删除包
+yum remove pcre
+
+更新包
+yum update pcre
+
+查找包
+yum search pcre

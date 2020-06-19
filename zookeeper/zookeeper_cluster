@@ -1,0 +1,35 @@
+zoo.cfg 配置文件
+tickTime=2000
+# The number of ticks that the initial 
+# synchronization phase can take
+initLimit=10
+# The number of ticks that can pass between 
+# sending a request and getting an acknowledgement
+syncLimit=5
+# the directory where the snapshot is stored.
+# do not use /tmp for storage, /tmp here is just 
+# example sakes.
+dataDir=/var/local/zookeeper
+dataLogDir=/var/local/zookeeper_log
+# the port at which the clients will connect
+clientPort=2181
+server.1=192.168.3.182:2888:3888
+server.2=192.168.3.190:2888:3888
+maxClientCnxns=60
+
+
+在dataDir目录下建立myid文件 内容为server.后面的id；
+server.id=host:port:port
+第一个端口号（2888）是follower服务器与集群中的“领导者”leader机器交换信息的端口
+第二个端口号（3888）是当领导者失效后，用来执行选举leader时服务器相互通信的端口
+
+maxClientCnxns : 限制连接到zookeeper服务器客户端的数量
+
+
+
+./zkServer.sh status 查看集群状态
+
+[root@myvm bin]# ./zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /usr/local/zookeeper/bin/../conf/zoo.cfg
+Mode: follower

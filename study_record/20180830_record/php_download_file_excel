@@ -1,0 +1,32 @@
+一、下载任意文件：
+
+Header ( "Content-type: application/octet-stream" );
+$ua = $_SERVER ["HTTP_USER_AGENT"];
+$file = '/var/www/tmp.txt';
+$filename = basename ( $file );
+$encoded_filename = rawurlencode ( $filename );
+if (preg_match ( "/MSIE/", $ua )) {
+    header ( 'Content-Disposition: attachment; filename="' . $encoded_filename . '"' );
+} else if (preg_match ( "/Firefox/", $ua )) {
+    header ( "Content-Disposition: attachment; filename*=\"utf8''" . $filename . '"' );
+} else {
+    header ( 'Content-Disposition: attachment; filename="' . $filename . '"' );
+}
+header ( "Content-Length: " . filesize ( $file ) );
+readfile ( $file );
+
+二、PHPExcel导出excel文件下载：
+
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        header('Content-Type: application/vnd.ms-excel');
+        $ua = $_SERVER["HTTP_USER_AGENT"];
+        $encoded_filename = rawurlencode($filename);
+        if (preg_match("/MSIE/", $ua)) {
+            header('Content-Disposition: attachment; filename="' . $encoded_filename . '"');
+        } else if (preg_match("/Firefox/", $ua)) {
+            header("Content-Disposition: attachment; filename*=\"utf8''" . $filename . '"');
+        } else {
+            header('Content-Disposition: attachment; filename="' . $filename . '"');
+        }
+        header('Cache-Control: max-age=0');
+        $objWriter->save('php://output');

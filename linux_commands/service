@@ -1,0 +1,7 @@
+service linux服务进程管理
+
+将服务bin文件放在 /etc/rc.d/init.d 目录下
+给予执行权限
+
+service mysql start
+service mysql stop

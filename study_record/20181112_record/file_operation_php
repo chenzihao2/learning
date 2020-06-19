@@ -1,0 +1,9 @@
+ $path =  文件路径;
+
+ basename($path);  返回文件名；
+
+ basename($path, $suffix);  返回文件名  并去掉文件名中的 suffix;
+
+dirname($path);   返回路径中的目录部分；
+
+dirname(_FILE_);  返回当前文件所在的路径;

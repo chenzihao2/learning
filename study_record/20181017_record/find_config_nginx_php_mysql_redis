@@ -1,0 +1,14 @@
+$$$$ nginx 
+which nginx 
+nginx -t 查看配置文件位置
+
+
+$$$$ mysql
+locate my.cnf 查找本机所有的my.cnf文件
+ps aux | grep mysqld | grep my.cnf 查找mysql启动时是否指定了配置文件
+若未指定配置
+mysql --help|grep my.cnf 查看默认加载的配置 排在前面的优先级高
+
+
+$$$$ php
+php -i | grep Loaded

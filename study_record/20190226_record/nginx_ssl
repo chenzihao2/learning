@@ -1,0 +1,68 @@
+nginx  http_ssl_module 模块   
+需要在编译安装的时候加上 --with-http_ssl_module
+
+
+如果已经安装好nginx的情况下
+
+1 进入nginx的源码包   
+2 nginx -V 查看原有模块
+3 在保持原有的configure的参数后面加上--with-http_ssl_module
+./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module
+
+4 配置完以后  make
+5 不要maske install 将编译好的nginx覆盖掉原有的nginx（nginx bin文件;
+
+
+nginx 配置http和https共存
+server {
+            listen 80 default backlog=2048;
+            listen 443 ssl;
+            server_name wosign.com;
+            root /var/www/html;
+
+            ssl_certificate /usr/local/Tengine/sslcrt/ wosign.com.crt;
+            ssl_certificate_key /usr/local/Tengine/sslcrt/ wosign.com .Key;
+        }
+
+ server {
+    charset utf-8;
+    index index.php index.html;
+    open_file_cache_valid 30s;
+    open_file_cache_min_uses 1;
+    listen    80;
+    server_name ;
+    allow all;
+    client_header_buffer_size 4096;
+     client_max_body_size 10m;
+    #open_file_cache max=102400 inactive=20s;
+    set $tid $pid-$msec-$remote_addr-$request_length-$connection;
+    access_log  /usr/local/var/log/nginx/-access.log main;
+    root   /Applications/MAMP/htdocs/public;
+    location ~ \.php$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+    location /api {
+     if (!-e $request_filename) {
+            rewrite ^(.*)$ /index.php last;
+        }
+        add_header X-Tracing-Id $tid;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+
+    location / {
+    }
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   html;
+    }
+}
+

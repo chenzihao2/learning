@@ -1,0 +1,26 @@
+var str = 'str';
+exports.str = str;
+|| 
+module.exports = str;
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------
+
+require('./str'); //如果当前目录下没有的话 会在node_modules目录中找
+c(str.str) = str;
+||
+c(str) = str;
+
+在node_modules/nav/nav.js
+require('nav'); 直接找到node_modules/nav/nav.js
+需要在nav/下生成 package.json文件
+生成方法  npm init --yes  在nav目录下

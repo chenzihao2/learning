@@ -1,0 +1,41 @@
+server {
+    charset utf-8;
+    index index.php;
+    open_file_cache_valid 30s;
+    open_file_cache_min_uses 1;
+    listen    80;
+    server_name ikang.local.com ikang-yp.local.com;
+    allow all;
+    client_header_buffer_size 4096;
+    #open_file_cache max=102400 inactive=20s;
+    set $tid $pid-$msec-$remote_addr-$request_length-$connection;
+    access_log  /usr/local/etc/nginx/logs/eye-access.log main;
+    root   /Users/chenhailong/work/eye-ak/public;
+    location ~ \.php$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+    location /api {
+     if (!-e $request_filename) {
+            rewrite ^(.*)$ /index.php last;
+        }
+        add_header X-Tracing-Id $tid;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+    location / {
+        alias /Users/chenhailong/work/opth-front/dist/;
+    }
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   html;
+    }
+}
+

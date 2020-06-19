@@ -1,0 +1,20 @@
+wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz
+
+下载解压
+编译完成
+
+添加环境变量
+node && npm
+
+npm install package
+npm list package
+npm update package
+npm uninstall package
+npm search express
+
+
+
+
+npm比较慢 装cnpm
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+需要sudo

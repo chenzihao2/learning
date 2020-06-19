@@ -1,0 +1,55 @@
+1， 初始化接口
+  /api/openapi/Initialize
+  参数
+appid=820011   机构appid
+salt=e86cf     盐
+sign=14820f46dbeb9fcd0b0eae029043e8ff    唯一标识
+user_id=1      用户ID
+shot_time=10   拍摄次数
+  返回值
+{
+    "error_code": "0",
+    "message": "",
+    "data": {
+        "device_type": "2",  设备类型
+        "total_shot_time": "100",   总的拍摄次数
+        "total_ai_time": "100",     总的AI次数
+        "used_shot_time": "42",     已使用的拍摄次数
+        "used_ai_time": "99"        已使用的AI次数
+    }
+}
+
+2，上传分析接口
+   /api/openapi/Analyze
+   参数
+   third_id     必须
+   img_urls     图片链接   多个图片逗号分隔   必须
+   appid        机构appid      必须
+   salt         盐    必须
+   sign         唯一标识 必须
+   gender       患者性别    必须
+   age          患者年龄    必须
+   user_id      上传的用户ID   必须
+   name         患者姓名     必须
+   phone        患者电话     必须
+
+   具体参数对应这个方法
+   function pack_http_parameter($urls, $name) {
+       $third_id = (string) APP_ID . '_' . USER_ID . $name;
+       $data = [];
+       $data['third_id'] = $third_id;
+       $data['img_urls'] = implode(',', $urls);
+       $data['appid'] = APP_ID;
+       $data['salt'] = substr(md5(APP_ID), 2, 5);
+       $data['sign'] = md5(APP_ID . $data['salt'] . APP_KEY . date('Y-m-d'));
+       $data["gender"] = 0;
+       $data["age"] = 0;
+       $data["user_id"] = USER_ID;
+       $data["name"] = $name;
+       $data["phone"] = '';
+       return $data;
+   }
+
+   返回值
+   成功 返回对应检查单的url
+   失败     会返回对应错误信息

@@ -1,0 +1,47 @@
+下载安装包
+https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.40-linux-glibc2.12-x86_64.tar.gz
+
+为mysql创建目录
+mkdir /usr/local/mysql
+
+在mysql目录下解压
+tar -xzvf 
+
+创建用户及用户组
+groupadd mysql
+useradd -r -g mysql mysql
+
+修改mysql目录所属组
+chown -R mysql.mysql /usr/local/mysql
+
+初始化数据库
+scripts/mysql_install_db --user=mysql --datadir=mysql/data --basedir=/usr/local/mysql
+
+启动mysql服务
+cd support-files & ./mysql.server
+
+
+以上步骤就完成了
+下面是安装之后的一些操作
+-------------------------------------------------------------
+
+修改root密码(忘记root密码时)
+cd /usr/local/mysql
+安全模式启动
+./bin/mysqld_safe --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --skip-grant-tables
+
+UPDATE user SET password=PASSWORD("new_password") WHERE user='root';
+
+flush privilieges;
+
+exit;
+
+
+mysql开启远程连接
+
+防火墙添加端口(具体查看firewall)
+firewall-cmd --zone=public --add-port=3306/tcp --permanent
+firewall-cmd --reload
+
+添加可以远程访问的root账户(具体查看grant命令使用)
+mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;

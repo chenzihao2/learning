@@ -1,0 +1,13 @@
+<header>头部
+<nav> 导航
+<footer> 底部
+<figure> 图片
+a标签实现下载    download属性 = 目标url
+a标签打开新的窗口跳转   target = _blank
+通常用于侧边栏的标签   aside
+base标签的作用   规定页面上所有连接的默认url
+文字显示方向相反 <bdo dir="rtl">该段落文字从右到左显示</bdo>
+禁用input    disabled = disabled
+隐藏input    type = hidden
+进度条标签 <progress value="22" max="100"></progress>
+

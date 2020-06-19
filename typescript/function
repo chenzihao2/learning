@@ -1,0 +1,45 @@
+定义
+function run():string {
+
+}
+
+匿名函数
+var fun2 = function(name:string, age:number):number {
+
+}//返回值和参数的类型要声明
+
+
+没有返回值的方法  返回值类型定义为void
+
+
+
+方法的可选参数 ?: 必须配置到参数的最后
+var fun2 = function(name:string, age?:number):number {
+
+}
+
+方法的默认参数
+var fun2 = function(name:string, age:number=20):number {
+
+}
+
+方法的剩余参数
+
+var fun2 = function(a:number, b:number, ...result:number[]):number {
+
+
+}
+fun2(1,2,3,4,5); 可以接收多个参数
+
+
+
+函数的重载
+function css(config:any):any {
+
+}
+
+同一个方法不同的参数执行不同的逻辑
+
+箭头函数
+function()     ()=>  中的this指向当前
+

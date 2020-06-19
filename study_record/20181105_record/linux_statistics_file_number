@@ -1,0 +1,29 @@
+ls -l | grep "^-" 
+查看文件夹下所有文件
+
+ls -l | grep "^-" | wc -l
+查看文件夹下所有文件的总数量
+
+grep "^-" 
+匹配文件
+
+grep "^d"
+匹配目录
+
+wc -l 
+统计输出的行数信息
+
+wc -w file 
+统计文件中的单词数
+
+wc -c file 
+统计文件中的字符数
+
+find ./ -name '*.php' | wc -l 
+统计所有的php文件
+
+find ./ -name '*.php' | xargs cat | wc -l
+统计所有的php文件的代码行数
+
+find ./ -name '*.php' | xargs cat | grep -v ^$| wc -l
+统计所有的php文件的代码行数 过滤掉空行

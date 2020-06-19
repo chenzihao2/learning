@@ -1,0 +1,6 @@
+$a = 0;
+$b = $a ? $a : 1      等价于  $b = $a ?: 1   等价于 $b = $a ?? 1;
+
+?:  和 ??  的区别
+前者检查的是$a的值是否为空 如果$a不存在则会报notice variable not defined
+后者检查的是$a是否isset

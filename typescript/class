@@ -1,0 +1,81 @@
+typescript 中的类
+
+class Person {
+        name:string; //属性
+     constructor(n:string) {
+        this.name =n;
+     }
+     
+     run():void{
+         console.log(this.name);
+     }
+}
+
+
+继承 extends super
+class Web extends Person{
+    constructor(n:string) {
+        super(n);//必须初始化父类的构造函数才能继承
+    }
+}
+
+
+静态
+
+static 定义
+
+class.function 调用
+
+
+
+多态 属于继承
+
+父类的方法不实现，又不同的子类去继承实现
+
+
+
+抽象类
+abstract关键字可以定义抽象类或者方法  只能被继承 不能被实例化
+主要用来定义标准
+abstact 定义的抽象方法必须被继承子类实现 自己不用实现
+
+
+接口
+
+属性接口 对json对象的约束
+//function printLabel(labelinfo:{label:string}):void {
+//    console.log('print');
+//}
+//printLabel({label:'adf'})
+
+interface FullName{
+firstName:string;  //分号结束
+secondName:string;
+thirdName?:string; //可选
+}
+
+function printName(name:Fullname) {
+
+} //传入的json对象name 必须满足属性接口FullName的约束
+
+
+
+interface Config{
+    type:string;
+url:string;
+    data?:string;
+    dataType::string;
+}
+function ajax(config:Config) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(config.type,config.url,1);
+    xhr.send(config.data)
+}
+
+函数类型接口 对传入的参数和返回值进行约束
+interface ency{
+    (key:string,value:string):string;
+}
+var md5:ency=function(key:String,value:string):string{
+
+}

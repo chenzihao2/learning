@@ -1,0 +1,7 @@
+path.normalize(p);   规范化路径
+path.resolve('/foo/bar', '/tmp/file') = /tmp/file;   返回绝对路径
+path.join(p1, p2, p3);  所有路径拼接到一切并返回normalize()后的结果
+path.dirname(p)   获取目录中的目录名
+path.basename(p, [ext])        获取路径中的文件名 弱有第二个参数后缀 则不返回后缀名
+path.extname(p)             获取文件的后缀名
+path.sep;  属性 返回系统中的文件分隔符  

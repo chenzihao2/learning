@@ -1,0 +1,15 @@
+[Unit]
+Description=zookeeper service 
+After=zookeeper.service
+
+[Service]
+Type=forking    
+ExecStart=/usr/local/zookeeper/bin/zkServer.sh start 
+ExecStop=/usr/local/zookeeper/bin/zkServer.sh stop
+ExecReload=/usr/local/zookeeper/bin/zkServer.sh restart          
+#ExecStatus=/usr/local/zookeeper/bin/zkServer.sh status          
+PrivateTmp=true
+      
+[Install]
+WantedBy=multi-user.target
+

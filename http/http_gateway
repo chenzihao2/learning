@@ -1,0 +1,11 @@
+网关
+
+
+网关主要是指协议转换
+
+
+http / *(ftp)    服务器端web网关
+
+http / https    服务端安全网关
+
+https / http    客户端安全加速网关

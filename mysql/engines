@@ -1,0 +1,9 @@
+查看当前的存储引擎
+show variables like '%storage_engine%';
+
+
+查看某个表的存储引擎
+show create table 表名;
+
+修改表的引擎
+alter table 表名 engine = innodb;

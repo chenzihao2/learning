@@ -1,0 +1,39 @@
+服务器端跨域配置
+Access-Control-Allow-Origin:*  //允许跨域的域名
+Access-Control-Allow-Header:*  //允许跨域的请求头
+Access-Control-Allow-Methods:*  //允许跨域的方法
+Access-Control-Max-Age : 3600   //在这个时间内不需要再发送预请求验证
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+跨域时默认允许的方法
+get, head, post
+
+
+跨域时默认允许的Content-Type
+text/plain
+multipart/form-data
+application/x-www-form-urlencoded
+
+
+请求头限制
+}
+否则需要进行预请求验证
+预请求的method为options
+
+
+
+

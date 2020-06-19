@@ -1,0 +1,9 @@
+command grep
+
+
+grep -c str  搜索出现的次数
+grep -r str  递归搜索
+grep -l str  只查找文件名
+grep -n str  查找对应的行
+grep -i str  不区分大小写
+grep -0 str  只显示匹配到的部分

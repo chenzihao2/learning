@@ -1,0 +1,13 @@
+php redis 扩展 
+官网 http://pecl.php.net/package/redis 选择对应版本下载
+解压后
+ phpize
+.configure
+make&make install
+
+最后生成扩展文件
+Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/
+
+修改php.ini
+extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/red     is.so
+

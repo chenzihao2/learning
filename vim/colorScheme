@@ -1,0 +1,8 @@
+git clone https://github.com/srcery-colors/srcery-vim
+
+将下载后的srcery.vim 复制到
+/usr/share/vim/vim74/colors
+目录下
+
+
+vimrc 中配置  colorscheme srcery

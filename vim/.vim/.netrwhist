@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/chenzihao/work/open/src/controller'
+let g:netrw_dirhist_2='/home/chenzihao/work/open/src/config'
+let g:netrw_dirhist_3='/home/chenzihao/work/open/src/controller'
+let g:netrw_dirhist_4='/home/chenzihao/work/open/node_modules/jweb-mysql'

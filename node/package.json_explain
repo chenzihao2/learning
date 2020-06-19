@@ -1,0 +1,30 @@
+至少
+"name" : "czh",
+"version" : "0.0.0"
+更多
+"scripts": {
+    "preinstall": "echo here it comes!",
+    "postinstall": "echo there it goes!",
+    "start": "node index.js",
+    "test": "tap test/*.js"
+} //npm run scripts
+
+{
+  "devDependencies": {
+    "browserify": "~13.0.0",
+    "karma-browserify": "~5.0.1"
+  }
+} //dependencies字段指定了项目运行所依赖的模块，devDependencies指定项目开发所需要的模块。
+
+bin 加入PATH  npm run it
+
+main  指定的加载入口文件  require('moduleName') 就会加载这个文件   默认值是根目录下的index.js
+
+config      
+{
+  "name" : "foo",
+  "config" : { "port" : "8080" },
+  "scripts" : { "start" : "node server.js" }
+} 在server.js脚本就可以引用config字段的值。  例如 listen(process.env.npm_package_config_port)
+
+

@@ -1,0 +1,5 @@
+sudo command 改成
+sudo env PATH=$PATH command
+
+
+profile 里添加 alias

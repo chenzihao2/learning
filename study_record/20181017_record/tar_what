@@ -1,0 +1,15 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: zihao
+ * Date: 2018/4/13
+ * Time: 下午2:49
+ 
+?>
+1、*.tar                      用 tar –xvf 解压
+2、*.gz                       用 gzip -d 或者 gunzip 解压
+3、*.tar.gz 和 *.tgz      用 tar –xzf 解压
+4、*.bz2                      用 bzip2 -d 或者用 bunzip2 解压
+5、*.tar.bz2                 用 tar –xjf 解压
+6、*.Z                         用 uncompress 解压
+7、*.tar.Z                    用 tar –xZf 解压

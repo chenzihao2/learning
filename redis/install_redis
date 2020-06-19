@@ -1,0 +1,63 @@
+CentOS下安装redis https://www.cnblogs.com/renzhicai/p/7773080.html
+
+下载安装包（奇数版本为非稳定版，偶数版本为稳定版）;
+wget http://download.redis.io/releases/redis-4.0.2.tar.gz
+
+解压并安装
+tar xzf redis-4.0.2.tar.gz
+cd redis-4.0.2
+make
+make install
+
+启动
+redis-server
+
+配置systemctl
+redis-server.service文件
+[Unit]
+Description=redis
+After=redis.service
+
+[Service]
+Type=forking   
+ExecStart=/home/chenzihao/tool/redis-4.0.2/src/redis-server  /etc/redis.conf 
+ExecStop=/home/chenzihao/tool/redis-4.0.2/src/redis-cli shutdown                                                
+PrivateTmp=true
+    
+[Install]
+WantedBy=multi-user.target
+
+
+redis-conf ->dir 目录权限
+
+
+配置Redis的运行方式和持久化文件、日志文件的存储位置
+utils/redis_init_script 初始化脚本文件
+
+1、配置初始化脚本
+首先将初始化脚本复制到/etc/init.d 目录中，文件名为 redis_端口号，其中端口号表示要让Redis监听的端口号，客户端通过该端口连接Redis。然后修改脚本第6行的REDISPORT变量的值为同样的端口号。
+2、建立文件夹
+/etc/redis 存放Redis的配置文件
+/var/redis/6379 存放Redis的持久化文件
+3、修改配置文件
+首先将配置文件模板（redis-4.0.2/redis.conf）复制到/etc/redis 目录中，以端口号命名（如“6379.conf”）
+daemonize => yes                                    使Redis以守护进程模式运行
+pidfile => /var/run/redis_端口号.pid                设置Redis的PID文件位置
+port => 端口号                                      
+dir => /var/redis/端口号                            设置持久化文件存放位置
+
+可以使用 /etc/init.d/redis_6379 start 启动redis
+
+
+
+redis开机自动启动
+在打开的redis初始化脚本文件头部第四行的位置，追加下面两句
+# chkconfig: 2345 90 10 
+# description: Redis is a persistent key-value database
+
+//设置开机执行redis脚本
+chkconfig redis_6379 on
+通过上面的操作后，以后也可以直接用下面的命令对Redis进行启动和关闭了
+
+service redis_6379 start
+service redis_6379 stop

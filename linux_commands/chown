@@ -1,0 +1,8 @@
+chown 修改目录或文件所属组
+
+chown -R mysql:mysql /usr/local/mysql
+	 user:group	dir
+
+
+-R 递归
+-v 修改的详细结果

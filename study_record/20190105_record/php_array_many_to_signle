@@ -1,0 +1,40 @@
+多维数组转为一维数组
+
+
+------------------------------function 1
+
+array_reduce($array, 'array_merge', []);
+
+example
+array_reduce($array, function($carry,$item){
+        return array_merge($carry, array_values($item));
+        }, []);
+array_merge 会把相同字符串键名的数组覆盖合并， 所以先用array_values取出值以后再合并
+
+处理二维数组
+
+
+*array_reduce(数组,回调函数，为空或null的时候的处理 || 回调函数第一次执行是的$carry值);
+回调函数 callback($array, $item);
+
+
+------------------------------function 2 ######
+$result = [];
+array_walk_recursive($array, function($value) use (&$result)) {
+    array_push($result, $value);
+}
+
+*array_walk_recursive(待处理的数组，回调函数)
+    回调函数中的参数分别为  数组的值和键  使用use闭包继承$result 否则访问不到$result;
+    递归处理  所以可以处理多维数组
+
+
+------------------------------function 3
+$result = [];
+array_map(function ($value) use (&$result){
+        $result = array_merge($result, array_values($value));
+        }, $array);
+
+*array_map(回调函数， 数组,.....可以是多个数组);
+对数组的每一个元素都执行回调函数
+回调函数的参数的个数 就是传入数组的数量  必须一致 按照顺序 每个参数对应每个数组的元素

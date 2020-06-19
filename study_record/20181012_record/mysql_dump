@@ -1,0 +1,10 @@
+导出
+mysqldump -h host -u username -p databasename > sqlfilename;
+导入
+mysql -h host -u username -p;
+create database;
+use database;
+source sqlfilename;
+
+
+

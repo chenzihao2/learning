@@ -1,0 +1,17 @@
+gitlab 可能需要本地域名解析
+配置hosts文件
+
+设置用户名和邮箱
+git config --global user.name chenzihao
+git config --global user.email
+
+
+检查用户名和邮箱是否正确
+$git config user.name --->查看用户名
+
+$git config user.email --->查看邮箱
+
+着色
+git config --global color.ui true
+
+git config --global credential.helper store -->会生成一个.gitconfig文件用来保存信息,不需要每次操作都输入密码

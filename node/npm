@@ -1,0 +1,57 @@
+npm 相关
+
+更新最新版本的npm
+npm install npm@latest -g
+
+安装包
+npm install package_name
+
+
+package.json 文件用来存储项目中所有的包
+例如
+{
+  "dependencies": {
+    "express": "^4.16.4",
+    "http": "^0.0.0"
+  },                                                                                          
+  "devDependencies": {
+    "http": "^0.0.0"
+  }
+}
+^重新安装时版本号第一位不变 只取后两位最新的
+~重新安装时前两位版本号不变 只取最后一位最新的
+*重新安装时所有的都取最新的
+
+自动生成package.json
+npm install package_name --save 生成dependencies包 生成环境
+npm install package_name --save-dev 生成devDependencies包 开发环境
+
+生成package.json
+npm init
+npm init --yes 强制生成
+
+有package.json文件时
+安装所有文件内的依赖包
+npm install 
+
+更新所有的依赖包
+npm update
+
+卸载包(同时更新package.json)
+npm uninstall package_name --save
+
+查看包
+npm list package_name
+
+全局安装
+npm install -g package_name (-g => global)
+全局安装的包在node目录的lib下
+
+查看包的版本
+npm info package_name 
+
+安装指定版本
+npm install package_name@1.1.1
+
+
+

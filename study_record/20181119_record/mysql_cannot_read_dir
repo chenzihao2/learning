@@ -1,0 +1,12 @@
+Can't read dir of  。。。。(error 13);
+
+mysql data文件夹权限问题
+
+找到data文件
+
+show global variables like "%datadir%";
+
+给予权限
+
+并将文件夹所属用户改成mysql
+chown -R mysql:mysql data

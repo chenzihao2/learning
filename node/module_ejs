@@ -1,0 +1,12 @@
+cnpm install ejs --save
+
+模板渲染
+模板文件后缀.ejs
+
+<%=variable_key%>    直接输出
+
+<% for(var i=0; i<list.length; i++){ %>
+<%=list[i]%>
+<%}%>                循环输出
+<%-%>                解析html代码
+

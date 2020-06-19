@@ -1,0 +1,3 @@
+nohup command > file &
+
+后台运行命令并讲输出到file文件中

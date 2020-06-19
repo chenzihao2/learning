@@ -1,0 +1,47 @@
+定义变量时候都要指定类型
+
+var flag:boolean;
+var num:number;
+var str:string;
+
+
+定义数组
+var arr:number[] = [1,2,3];
+var arr:Array<number> = [1,2,3];
+var arr:any[] = 
+
+
+元组类型  属于数组
+
+let arr:[number,string] = [123,'n']; //每一个位置一个类型
+
+枚举类型
+enum Flag {
+    success = 1,
+    error =2
+};
+
+let s:Flag=Flag.success;
+
+任意类型
+var a:any
+
+undefined类型
+var num:undefined;
+
+var num:number | underfined; //定义时候可以不赋值
+
+
+null空类型
+
+var num:null
+
+void 表示没有任何类型
+
+function run():void{
+
+} //表示方法没有返回任何类型
+
+
+never类型
+

@@ -1,0 +1,23 @@
+application/x-www-form-urlencoded
+提交方式
+
+参数需要使用 http_build_query();处理  其对应的反函数是  parse_str();
+
+
+
+ase cbc模式 补全加密
+function ase_cbc($data, $secret) {
+        $data = json_encode($data);
+        $encrypted = openssl_encrypt($data, 'AES-128-CBC', $secret, 1, $secret);
+        return base64_encode($encrypted);
+    }   
+
+解密
+    function ase_cbc_de($data, $secret) {
+        $data = base64_decode($data);
+        $decrypted = openssl_decrypt($data, 'AES-128-CBC', $secret, 1, $secret);
+        return json_decode($decrypted, 1); 
+    }   
+
+
+

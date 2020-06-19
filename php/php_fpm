@@ -1,0 +1,16 @@
+www.conf
+
+[www]
+user = nobody               #进程的发起用户和用户组，用户user是必须设置，group不是  nobody 任意用户
+group = nobody
+
+listen = [::]:9000          #监听ip和端口，[::] 代表任意ip
+chdir = /app                #在程序启动时将会改变到指定的位置(这个是相对路径，相对当前路径或chroot后的“/”目录)　
+
+pm = dynamic                #选择进程池管理器如何控制子进程的数量  static：　　对于子进程的开启数路给定一个锁定的值(pm.max_children)   dynamic:　 子进程的数目为动态的，它的数目基于下面的指令的值(以下为dynamic适用参数)
+pm.max_children = 16        #同一时刻能够存货的最大子进程的数量
+pm.start_servers = 4        #在启动时启动的子进程数量
+pm.min_spare_servers = 2    #处于空闲"idle"状态的最小子进程，如果空闲进程数量小于这个值，那么相应的子进程会被创建
+pm.max_spare_servers = 16   #最大空闲子进程数量，空闲子进程数量超过这个值，那么相应的子进程会被杀掉。
+catch_workers_output = Yes  #将worker的标准输出和错误输出重定向到主要的错误日志记录中，如果没有设置，根据FastCGI的指定，将会被重定向到/dev/null上
+php_admin_value[error_log] = /var/log/php/fpm-php.www.log  #错误日志位置

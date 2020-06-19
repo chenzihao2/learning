@@ -1,0 +1,18 @@
+官网 http://kafka.apache.org/downloads.html
+
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/kafka/2.2.0/kafka_2.11-2.2.0.tgz
+
+解压后修改配置文件  config/server.properties
+
+要修改的地方
+borker.id=0                        从0开始主机编号
+advertised.host.name=ip            主机IP
+log.dirs=dir                        持久化目录
+zookeeper.connect=ip:port,ip:port   zk集群
+delete.topic.enable=true            物理删除topic
+
+详细配置
+http://www.orchome.com/472
+
+启动
+bin/kafka-server-start.sh config/server.properties

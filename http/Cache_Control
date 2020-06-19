@@ -1,0 +1,8 @@
+Cache-Control
+请求头 控制缓存字段
+
+no-store           不缓存
+no-cache           缓存，但是使用缓存之前会请求服务器判断是否为最新
+max-age=s          缓存时间
+
+Expires   缓存时间 优先级比max-age低

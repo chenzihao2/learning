@@ -1,0 +1,5 @@
+shell 配置文件中加入下面两行
+
+
+unsetopt inc_append_history
+unsetopt share_history

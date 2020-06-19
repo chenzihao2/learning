@@ -1,0 +1,12 @@
+Mac批量替换某个目录下文件中的字符串：
+
+OS X上的sed和类似ubuntu这种linux上的sed是不同的, 要求在sed -i后面跟一个字符串, 用来备份. 如果留空就不备份
+
+grep -rl "str1" dir | xargs sed -i "" 's/str2/str3/g'
+
+或者（如果安装了ag)
+
+ag -l "str1" dir | xargs sed -i "" 's/str2/str3/g'
+
+可以组合管道过滤, 比如替换js文件的字符串。
+grep -rl "str1" dir  | grep '.js' | xargs sed -i "" 's/str2/str3/g'

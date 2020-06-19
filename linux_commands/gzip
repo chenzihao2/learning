@@ -1,0 +1,1 @@
+gzip -d filename  解压文件

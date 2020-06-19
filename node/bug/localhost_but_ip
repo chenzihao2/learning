@@ -1,0 +1,3 @@
+node.js的server启动后，hellow world可以用localhost访问到，换了IP为什么访问不了?
+
+去除 http.createServe 中的hostname声明

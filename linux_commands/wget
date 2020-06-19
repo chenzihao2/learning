@@ -1,0 +1,22 @@
+wget url
+
+
+下载并保持不同的文件名
+wget 默认以链接中最后一个 ‘/’ 后面的字符串俩命名
+wget -O newName url
+
+限速
+wget -limit-rate=300k url
+
+
+断点下载
+wget -c url
+
+
+后台下载
+wget -b url
+可以在wget-log中查看下载进度
+
+
+下载多个文件，将文件链接保存在文件中
+wget -i filelist.txt

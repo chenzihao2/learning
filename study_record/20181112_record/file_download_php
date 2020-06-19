@@ -1,0 +1,7 @@
+$path = '文件路径';
+
+$file = basename($path);
+
+header("Content-Type: application/force-download");
+header("Content-Type: application/force-download");
+readfile($file);

@@ -1,0 +1,36 @@
+pm2 common command
+
+pm2 start appName || jsonFile               启动程序
+pm2 start appName -i 4                      启动四个服务，负载均衡
+pm2 start app --name appName                以appName为名字启动
+pm2 start appName --watch                   当文件变化时自动重启
+
+
+
+pm2 list                                    列出所有的应用程序
+pm2 monit                                   显示程序的CPU和内存使用情况
+pm2 show appName                            显示应用程序的信息
+
+
+
+pm2 logs                                    显示所有程序的日志
+pm2 logs appName                            显示程序的日志
+
+
+
+pm2 stop all                                停止所有的程序
+pm2 stop appName                            停止对应的程序
+pm2 restart appName                         重启对应的程序
+pm2 delete appName                          删除对应的程序
+pm2 scale appName 10                        扩展到10个服务
+pm2 reset appName                           重置启动服务数量
+
+
+
+pm2 startup                                 创建开机自启动命令
+pm2 save                                    保存当前应用列表
+pm resurrect                                重新加载应用列表
+
+
+
+pm2  https://pm2.io/doc/zh/runtime/quick-start/?tdsourcetag=s_pcqq_aiomsg

@@ -1,0 +1,29 @@
+yum install epel-release
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+yum install php72w-fpm
+yum -y install  php72w-cli php72w-common php72w-devel php72w-embedded php72w-gd php72w-mbstring php72w-pdo php72w-xml php72w-pear php72w-devel  php72w-pdo_mysql
+
+其他扩展
+
+php72w-cli
+php72w-common
+php72w-devel php72w-embedded php72w-fpm php72w-gd php72w-mbstring php72w-mysqlnd php72w-opcache php72w-pdo php72w-xml php72w php72w-bcmath php72w-dba php72w-enchant php72w-imap php72w-interbase php72w-intl php72w-ldap  php72w-mcrypt php72w-odbc php72w-pdo_dblib php72w-pear php72w-pecl-apcu php72w-pecl-imagick php72w-pecl-xdebug php72w-pgsql php72w-phpdbg php72w-process php72w-pspell php72w-recode php72w-snmp php72w-soap php72w-tidy php72w-xmlrpc php72w-pecl-igbinary php72w-intl php72w-memcached php72w-pecl-mongodb
+
+
+
+卸载php-fpm
+yum -y remove php*
+
+
+yum install php72w-devel   => 安装后，可以使用 phpize 命令从源码编译 PHP 扩展，得到 *.so 文件。
+yum install php72w-pear    => 安装后，可以使用 pecl 命令来安装软件。可以通过 PHP 官方提供的 pecl 命令从 PHP 的官方扩展库安装扩展。
+
+
+pecl install swoole  安装扩展
+
+
+
+
+编译扩展
+yum install gcc
+yum install glibc-headers gcc-c++

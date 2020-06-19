@@ -1,0 +1,29 @@
+git 查看某个文件的修改记录
+
+
+git log filename 查看此文件的commit的记录
+git log -p filename 查看此文件的diff
+git show commit_id filenmae 查看某次提交的文件修改
+
+
+
+git 查看某个用户的修改记录
+
+git log --author=name  
+
+
+
+
+
+
+
+
+其他
+git log -p 查看每次提交的diff
+git log -p -2 查看最近两次提交的diff
+git log --grep = str  可以用正则
+git show 查看最近一次提交的内容 后面可以加上commit_id
+git log --since || git log --after 显示指定时间之后的提交
+git log --until || git log --before 显示指定时间之前的提交
+git diff 查看工作区和暂存区的修改差异
+git diff --cached 查看暂存区和上次提交这间的差异

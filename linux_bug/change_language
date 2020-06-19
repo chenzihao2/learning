@@ -1,0 +1,10 @@
+echo $LANG 查看当前系统语言
+
+临时更改
+export LANG=en_US.UTF-8
+
+永久生效
+vim /etc/locale.conf
+
+source /etc/locale.conf
+

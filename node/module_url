@@ -1,0 +1,20 @@
+url模块
+
+
+url.parse(url); //解析url路径
+{
+            protocol:'http',
+            host
+            query //参数 
+            pathname //路径
+
+}
+
+当parse(url)第二个参数为true是 解析出来的query值为一个对象
+
+url.format 相当于相反的 parse();
+
+
+
+url.resolve(from, to);
+url.resolve('http://example.com/one', 'two')  = http://example.com/two

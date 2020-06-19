@@ -1,0 +1,11 @@
+yum install screen
+
+
+
+screen -S screenName  创建一个screen 名字为screenName
+
+
+screen -ls  列出所有的screen
+
+
+screen -r screenName  进入screenName的screen
