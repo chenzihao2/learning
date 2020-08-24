@@ -1,0 +1,18 @@
+重定向到文件
+> file      输出到文件
+> /dev/null 输出到"黑洞"
+>> file     追加到文件末尾
+2> error    标准错误输出到error文件中
+
+command > file 2>&1   将标准输出和标准错误输出都重定向到文件中
+
+
+
+sort -n << END  从键盘输入的值进行排序 输入END结束
+
+
+stdin   标准输入 
+stdout  标准输出 >  >>
+stderr  标准错误输出 2>
+
+

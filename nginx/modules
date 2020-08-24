@@ -1,0 +1,49 @@
+####stub_status
+显示客户端连接时nginx的一些状态
+server {
+    location /mystatus {
+        stub_status;
+    }
+}
+
+
+####http_random_index_module 
+目录中选择随机一个主页
+
+
+
+####http_sub_module
+http内容替换
+
+
+
+
+####limit_conn_module
+连接频率限制
+
+
+####limit_req_module
+请求频率限制
+
+
+####http_access_module
+基于ip的访问控制
+allow	ipaddress
+deny 	ipaddress
+
+
+####http_auth_basic_module
+基于用户信任的访问控制
+
+
+####gzip_static_module
+预读gzip的功能
+
+
+####secure_link_module
+检查请求链接的真实性，保护资源未经授权的访问
+资源链接增加过期时间
+
+
+####geoip_module
+读取ip所在地域信息

@@ -1,0 +1,47 @@
+####host    查看对应host的ip地址
+host url   
+
+
+
+####whois
+whois domain    查看域名相关信息
+
+
+
+
+
+####ifconfig
+eth0    网线连接网口
+lo      本地回环(127.0.0.1)
+wlan0   无限网
+enp0s3  网线连接网口
+virbr0  虚拟网络接口(虚拟机)
+
+
+
+
+
+####netstat network statistics
+-i  列出所有的网络接口的统计信息
+-uta    列出所有开启的连接(udp tcp all)
+-t  列出listen状态的信息
+-s  列出统计信息
+-p  显示对应程序名称
+-a  显示所有
+netstat -anp | grep 80
+
+
+
+
+
+
+####ss  socket statistics
+
+
+
+
+
+
+
+####rpm
+-ql command_path    查询命令所属的包

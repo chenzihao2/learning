@@ -1,0 +1,33 @@
+upstream name {
+    server 127.0.0.1:8001;
+    server 127.0.0.1:8002;
+    server 127.0.0.1:8002;
+}
+
+must in http
+
+
+server status 
+
+down        当前server不参与负载均衡
+backup      预留的备份服务器
+max_fails   允许请求失败的次数
+fail_timeout    经过max_fails失败后，服务暂停的时间 default = 10s
+max_conns   限制最大的接收连接数
+
+
+
+调度算法
+轮询    
+加权轮询    weight值越大，分配到的访问几率越高
+ip_hash     每个请求按照访问ip的hash结果分配，同一个ip固定访问同一个后端服务器(解决用户session鉴权等问题)
+url_hash    每个请求按照访问url的hash结果分配，同一个url固定访问同一个后端服务器
+least_conn  哪个机器连接数少就分发给哪台机器
+hash关键数值    hash自定义的key
+
+
+
+
+upstream backend {
+
+}

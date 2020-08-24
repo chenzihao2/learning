@@ -1,0 +1,106 @@
+####pwd  (print working directory)
+
+
+####ls
+-a  显示所有的 包含隐藏的
+
+-l  显示详细信息
+total 当前目录总量 单位千字节
+    权限     链接数 所有者   所属组    大小(字节) 
+{
+    drwxr-xr-x.  4 chenzihao chenzihao 4096 5月  12 18:22 7k7k
+    drwxr-xr-x.  2 chenzihao chenzihao    6 6月  10 2019 Desktop
+}
+
+
+-h  大小进行进制
+
+-t  按照时间倒序排序
+
+
+
+
+
+####du  disk usage 磁盘使用
+
+-h  大小进行进制
+-a  显示目录和文件的大小(默认不显示文件大小)
+-s  只显示总计大小
+
+
+
+
+
+
+####cat
+-n  显示行号
+
+
+
+
+####less 分页读文件
+
+
+
+
+####head 显示文件开头
+
+
+
+####tail 显示文件结果
+-f -s 4     每个四秒检查一次
+
+
+####touch    修改文件时间/创建文件
+
+
+####mkdir   创建目录
+-p  递归创建目录
+
+
+
+
+
+####cp  
+-r  递归(recursive)
+
+
+####rm
+-i  向用户确认(inform 通知)
+-f  强制(force)
+
+
+
+
+####ln  创建连接(link)
+ln f1 f2    为f1创建硬链接f2 (硬链接 inode一样)
+ln -s f1 f2 为f1创建软连接f2 (软连接)
+
+硬链接  后者指向前者文件内容
+软链接  后者指向前者文件名, 可以指向目录
+
+
+
+####df -h 
+查看系统磁盘使用量
+
+####free
+显示系统内存使用的情况
+
+
+####uname -a
+显示系统信息
+
+
+
+####rpm -q centos
+cat /etc/redhat-release
+
+
+
+####file /bin/ls
+查看当前系统位数
+
+
+####lsof
+查看系统中所有进程调用的文件

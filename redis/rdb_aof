@@ -1,0 +1,62 @@
+两种持久化方式
+
+####rdb
+
+讲redis存储在内存中的数据以RDB二进制文件存储在硬盘中
+
+#command
+
+save(cmd) 触发生成rdb文件
+
+bgsave(cmd)  fork出一个子进程 异步触发
+
+满足某些条件会自动生成rdb文件
+
+in config
+save 900 1
+save 300 10
+save 60 10000
+
+
+
+
+
+
+弊端
+
+耗时耗性能
+不可控 宕机可能会有数据丢失
+
+
+
+####AOF
+每条redis的操作都写入到aof日志文件中
+
+三种模式
+appendfsync
+
+always  永远写入，不会丢失数据，但是开销大
+everysec    每秒写入， 丢失一秒数据
+no      由系统自己来决定
+
+
+bgrewriteaof(cmd)    aof重写
+
+in config
+appendonly yes  打开aof
+appendfsync     aof模式
+appendfile      aof文件
+
+
+
+
+#### rdb diff aof
+同时开启的情况下先加载 aof
+aof体积比rdb大
+aof恢复速度比rdb慢
+rdb容易丢数据
+rdb比较重(需要将全部的数据写入到硬盘中) aof只是单次追加
+
+
+info memory(cmd)
+查看当前redis内存量占用

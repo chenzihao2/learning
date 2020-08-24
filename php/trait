@@ -1,0 +1,16 @@
+trait classname {
+
+}
+
+otherclass {
+    use classname;
+}
+
+
+因为php语言是单继承的 
+
+采用trait解决这个问题
+
+
+use trait 可以将trait中的方法引入到当前类中
+

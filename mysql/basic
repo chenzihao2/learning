@@ -1,0 +1,98 @@
+#int
+
+tinyint     0 - 255     2^8 - 1     一字节
+smallint    0 - 65535   2^16 - 1    2字节
+mediumint   0 - 166777215   2^24 -1     3字节
+int                     2^32 -1         4字节
+bigint                  2^64 - 1        8字节
+
+
+
+#float
+
+float[(m,d)]    m总位数 d小数位数
+double
+
+
+
+#日期
+timestamp(与时区有关，可以自动更新, 以int格式存储但是展示时间格式)
+datetime(与时区无关)
+相比于字符串会占用更少的空间，更快的数据过滤
+
+
+
+#string
+char(m)     m个字符
+varchar(m)
+
+
+
+#子查询
+当子查询中查出了多条结果时候
+ANY()
+SOME()
+ALL()
+
+exists() 子查询是否有结果
+
+insert into tablename(column_name) select column_name from othertable;
+
+create table tablename() select column from othertbable;
+
+
+#函数
+
+concat('a', 'b') => ab      连接字符
+concat_ws('|', 'a', 'b', 'c') => a|b|c  指定分隔符
+format()    格式化数字(千位制)
+lower()     字符小写
+upper()     字符大写
+left('mysql', 2) => my      获取左侧的字符串
+right()                     获取右侧的字符串
+length()                    获取字符串长度
+ltrim()                     删除左侧的空格
+rtrim()                     删除右侧的空格
+trim()                      两边都去掉空格， 也可以去掉特定的字符
+replace()                   字符替换
+substring()                 字符串截取
+like                        模式匹配( like '%1%%' escape '1') %代表任意字符  _代表任意一个字符
+
+
+ceil()                      进一取整
+floor()                     退一取整
+div                         整数除法
+mod                         取余
+round()                     四舍五入
+power()                     幂运算
+
+
+now()                       返回日期和时间
+curdate()                   当前日期
+curtime()                   当前时间
+date_add()                  日期加减
+datediff()                  计算两个时间之间的差值
+date_format()               格式化时间
+
+
+connection_id()             返回当前连接id
+database()                  返回当前数据库
+last_insert_id()            返回最后一条插入的id
+user()                      返回当前用户
+version()                   返回当前mysql版本
+
+
+#存储引擎
+show create table table_name; 
+myisam  256tb   不支持事物  表锁    支持数据压缩 不支持外键
+innodb  64tb    支持事物    行锁    不支持压缩  支持外键
+config
+engine = innode;
+
+#锁
+共享锁 读锁 可以多个用户同时读
+排他锁 写锁 禁止他用户读和写
+
+锁颗粒
+表锁    开销最小
+行锁    开销最大(锁比较多)

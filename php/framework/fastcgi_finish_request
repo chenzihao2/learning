@@ -1,0 +1,6 @@
+if (function_exists('fastcgi_finish_request'')) {
+    fastcgi_finish_request();
+}
+客户端在此返回
+
+服务端可以继续执行一些内容

@@ -1,0 +1,13 @@
+yum install tomcat
+
+java -> openjdk
+
+war  -> web application archive
+jar  -> java archive
+
+port -> 8080
+
+
+
+
+

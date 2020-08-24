@@ -1,0 +1,34 @@
+install
+
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+
+
+usage
+
+composer init           初始化
+composer install        安装composer.json中的包
+composer update         更新composer.json中的包 并升级lock
+composer search         搜索packagist.org包 
+composer show [package] 展示包详情
+composer validate       检测composer.json文件是否有效
+composer dump-autoload  在包中增加新类的时候更新autoloader
+
+
+修改中国全量镜像
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+阿里镜像
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+恢复官方源
+composer config -g --unset repos.packagist
+
+
+
+仅更新单个库
+composer update pack/age
+composer update --lock  更新composer.lock
+
+优化自动加载
+composer dump-autoload --optimize
+
+

@@ -1,0 +1,53 @@
+Lua
+简洁 轻量 脚本语言
+
+
+syntax
+
+
+####注释
+--行注释
+
+--[[
+    块注释
+--]]
+
+
+
+####变量
+a = 'adas'
+
+布尔类型只有 nil 和 false 是false  , 数字0, 空字符串都是 true
+
+没有特殊说明 都是全局变量
+
+
+
+
+
+####语句
+
+num = 1
+while num < 100 do
+num = num + 1
+end
+print(num)
+
+没有++ 没有+=
+
+
+
+for i=1,100 do 
+sum = sum + i
+end
+
+
+if a == 10 and b == 10 then
+print()
+elseif a == 9 and b ~= 9 then
+print()
+else
+print()
+end
+
+

@@ -1,0 +1,71 @@
+####二进制日志(binlog)
+记录了所有的mysql数据库操作
+
+in config
+binlog-format = statement | row(default)             日志格式
+
+cmd
+mysqlbinlog     binglog_name                查看日志
+
+
+statement
+基于段的复制 基于sql
+生成的日志量较少
+无法保证一致性
+
+row
+基于行的复制
+保证一致性, 减少数据库锁的使用
+要求表结构必须一致(包括表的列的先后顺序)
+
+
+####过程
+1: master写入二进制日志
+2: slave读二进制日志，并写入relay_log中
+3: slave执行relay_log
+
+
+
+####config
+创建复制账户并赋予权限
+master
+log_bin
+server_id
+
+slave
+relay_log = relay_log (中继日志名)
+
+
+####model
+基于日志的复制(slave设置日志偏移量进行复制)
+
+
+基于GTID的复制
+GTID(保证每一个在master上提交的事务都可以生成一个唯一ID)
+gtid_mode = on
+
+
+####主从延迟
+减少大事务
+可以配置多线程复制
+
+####cmd
+change mster to master_host = '',
+       master_user = 'repl',
+       master_password='',
+       master_auto_position=1;
+
+
+show slave info;
+
+start slave;
+
+
+
+####如何建立高可用
+监控 报警
+备份  恢复
+正确配置环境
+定期清理数据
+增加系统冗余
+故障转移

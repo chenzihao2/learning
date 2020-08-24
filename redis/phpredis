@@ -9,5 +9,5 @@ make&make install
 Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/
 
 修改php.ini
-extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/red     is.so
+extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/redis.so
 

@@ -1,0 +1,55 @@
+####多个虚拟机相同的server_name 的优先级问题
+
+优先访问最先读取的到的 server.conf 文件中的server
+
+如果直接通过ip 访问 也将默认访问到最先读取到的server
+
+
+
+
+
+
+
+####同个server里面location的匹配优先级
+
+=   精准匹配
+^~  表示普通字符匹配，使用前缀匹配
+~   表示正则匹配
+~*  表示正常匹配 区分大小写
+
+
+
+####try_files 按顺序检查文件是否存在
+location / {
+    try_files $uri $uri/ /indexs.php
+}
+
+
+####alias root
+location /a/b/ {
+    alias /c/d/;
+}
+=> /c/d/params
+
+
+location /a/b/ {
+    root /c/d/;
+}
+=> /c/d/a/b/params
+
+
+
+####获取用户的真实IP
+在一级代理服务器中  set x_real_ip = $remote_addr
+
+
+
+####nginx : 413 request entity too large 请求过大
+client_max_body_size    用户上传限制
+
+
+####nginx : 502 后端服务无响应
+
+
+
+####nginx : 504 后端服务响应超时

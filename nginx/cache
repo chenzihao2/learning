@@ -1,0 +1,6 @@
+代理缓存
+
+proxy_cache zonename | off
+
+
+in http

@@ -1,0 +1,19 @@
+门面模式
+
+基于容器 实现静态方式调用所有方法
+核心  __callStatic()
+
+
+
+
+当没有继承的时候
+self::class  = static::class = 获取当前类名
+
+
+当有继承的时候 in 父类
+self::class = 父类类名
+static::class = 子类类名
+
+当use trait时
+self::class = static::class = 当前类名
+trait名::静态属性 获取trait中的属性

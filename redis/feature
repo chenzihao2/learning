@@ -1,0 +1,49 @@
+####慢查询
+
+慢查询只发生在redis指令执行阶段
+
+#config
+
+config get slowlog-max-len = 128 (慢查询队列长度)
+config get slowlog-log-slower-than = 1000 (微秒) 阈值
+
+
+#command
+
+slowlog get [n]     获取慢查询队列 n个
+slowlog len         获取慢查询队列长度
+slowlog reset       清空队列
+
+
+
+
+
+
+####pipeline(流水线)
+一次网络请求中执行多次命令
+
+
+
+
+####发布订阅
+publish channel  message    发布消息到频道
+subscribe channel           订阅频道
+unsubscribe channel         取消订阅频道
+
+
+
+####位图 bits
+getbit  key 1(位数)
+setbit  key 10 1
+bitcount    key     获取值为1的位的个数
+
+
+####hyperloglog(tring)
+极小空间完成独立统计
+
+pfadd key element   添加元素
+pfcount key         计算总数
+pfmerge key1 key2   合并多个
+
+
+####GEO(地理信息)

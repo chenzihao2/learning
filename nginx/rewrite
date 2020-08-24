@@ -2,6 +2,8 @@
         正则匹配   重写后的地址
 rewrite regex replacement [flag];
 
+in server location if
+
 
 四个flag
 
@@ -24,13 +26,13 @@ rewrite ^/users/(.*)$ /show?user=$1 last;
 
 使用实例
 
+rewrite ^(.*)$ /somepage.html break;    将所有的页面请求都重定向到同一个页面(维护)
+
 
 server {
-    ...
     rewrite ^(/download/.*)/media/(.*)\..*$ $1/mp3/$2.mp3 last;
     rewrite ^(/download/.*)/audio/(.*)\..*$ $1/mp3/$2.ra  last;
-    return  403; #没有匹配上，那就返回403咯
-    ...
+    return  403;
 }
 注意，在server中使用rewrite ，我们使用的flag是last，但是在location中，我们却只能用break：
 

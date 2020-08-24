@@ -1,0 +1,51 @@
+四种映射方式
+PSR-0 autoloading(弃用)
+
+PSR-4 autoloading
+将src目录下所有的文件生成对应在school命名空间下的类 在 vendor/composer/autoload_psr4.php 中以数组的形式
+
+classmap generation
+将classes目录下所有的文件生成一个对应的关系 在 vendor/composer/autoload_classmap.php 以数组的形式
+
+files
+主要用于引入helper function 文件
+
+
+
+
+//in composer.json
+{
+    "autoload" : {
+        "classmap" : ["classes/"],
+        "files" : ["common/util.php"],
+        "psr-4" : {
+            "school\\" : "src/"
+        }
+    }
+}
+
+通过 composer dump-autoload 更新以上是四种映射 
+
+
+composer dump-atoload -o
+由于psr4的加载会耗费一定的性能， composer autoloader 会先检查classmap 中注册的类  使用此命令提前注册到classmap 中  -o = -optimize
+
+
+
+
+
+
+
+
+
+
+
+
+spl_autoload_register('my_autoload', true, true);
+注册一个自动加载的函数
+true    注册失败则抛出是否抛出异常
+true    注册的函数排在函数队列之首或者末尾
+
+get_declared_classes()
+获取已经声明的类的一个数组
+

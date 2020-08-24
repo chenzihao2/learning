@@ -1,0 +1,48 @@
+####tar         打包，归档 archive
+-cvf    folder.tar      folder
+-c      创建打包
+-v      显示过程
+-f      打包文件
+-tf     folder.tar      显示归档里的内容
+-rf     folder.tar      file_extra      追加文件到归档中
+-xvf    folder.tar      展开归档
+-zcvf   folder.tar      归档并使用gzip压缩
+-jcvf   folder.tar      归档并使用bzip2压缩
+
+
+
+
+
+
+
+
+
+####gzip
+gzip    folder.tar      压缩
+gunzip    folder.tar.gz      解压缩
+
+
+
+
+
+####bzip2
+bzip2   folder.tar      压缩
+bunzip2 folder.tar.bz2  解压缩
+
+
+
+
+####zcat zmore zless
+查看gzip压缩的文件内容
+
+
+
+
+####bzcat   bzmore  bzless
+查看bzip2压缩的文件内容
+
+
+
+
+####zip
+zip -r  folder.zip folder

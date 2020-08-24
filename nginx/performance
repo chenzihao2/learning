@@ -1,0 +1,45 @@
+网络
+
+系统
+
+服务
+
+
+程序
+
+
+
+数据库
+
+
+
+
+
+####文件句柄
+linux 中每个进程都有固定文件句柄调用上限(1024)
+
+在 /etc/security/limits.conf 中进行全局修改
+
+在 /etc/nginx/nginx.con 中只修改nginx进程
+worker_rlimit_nofile 65535;
+
+
+
+
+
+####cpu亲和
+nginx进程绑定在固定的cpu核上， 减小进程在cpu间迁移的损耗
+worker_processs cpu核数;
+worker_cpu_affinity auto;
+
+
+####通用
+events {
+    use epoll;
+    worker_connections 10240; 每个进程可以处理的最大连接数
+}
+
+charset utf-8;
+sendfile on;
+tcp_nodelay on;
+gzip on;

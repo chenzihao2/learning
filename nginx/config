@@ -1,0 +1,51 @@
+user        nginx服务使用用户
+work_processes      工作进程数( 一般保持和cpu核数一致)
+error_log       错误日志
+pid         启动的进程id存放的文件
+
+
+
+
+events{
+    worker_connections      每个进程允许的最大连接数(最高65535)
+    use epoll                     定义使用的内核模型
+}
+
+http {
+    log_format access_name  ""
+    access_log /var/log/access_log access_name;
+    include /etc/nginx/mime.types
+    keepalive_timeout   65; 客户端和服务端连接建立的超时时间
+
+    server {
+        listen  监听端口
+        server_name 虚拟主机域名
+
+        location / {
+            root(项目目录)    
+            index(默认入口文件)
+        }
+
+        error_page 500 502 503 /50x.html; (错误页面都展示50x.html)
+        location = 50x.html {
+            root
+        }
+    }
+
+    server {
+
+    }
+}
+
+################################
+sendfile (http server loccation)
+sendfile on (增加静态资源访问性能)
+
+tcp_nopush (h s l)
+tcp_nopush  提高网络传包的效率 依赖sendfile
+
+tcp_nodelay (h s l)
+keepalive下   提高网络包的实时性
+
+gzip (s l)
+gzip on     压缩传输

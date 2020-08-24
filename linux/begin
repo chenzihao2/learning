@@ -1,0 +1,15 @@
+$           表示一般用户
+#           表示root用户
+
+command
+hostname    显示当前主机名
+whoami      显示当前用户
+control + d 等价于exit
+
+man "command"   显示命令的手册(manual)
+date        显示当前时间
+
+
+
+短参数  command -p   ls -a          赋值  -p 10
+长参数  command --ppp  ls --all       赋值  --p=10

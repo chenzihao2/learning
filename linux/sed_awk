@@ -1,0 +1,124 @@
+正则表达式(grep)
+[0-9]   中括号表示范围
+[^0-9]  中括号中^表示取反
+[./,]   中括号中的特殊字符就表示其本身
+.       代表所有字符
+^word   以word开头的一行
+word$   以word结束的一行
+^$      表示空行
+\w      表示[A-Za-z0-9_]
+\W      表示[^A-Za-z0-9_]
+\b      表示单词的分隔符
+*{0,}       零次或者多次匹配前面的字符
++{1,}      一次或者多次匹配前面的字符(使用时要加\)
+?{0,1}       零次或一次的匹配前面的字符(使用时要加\)
+()      子表达式(使用时要加\)
+{n,m}   重复次数(使用时要加\)
+.*      任意字符串任意长度
+|       或(使用时要加\)
+
+    15位或者18位身份证号
+    [1-9]([0-9]{13}|[0-9]{16})[0-9xX]
+    数字和字母和下划线组成的密码
+    \w+
+
+
+
+
+
+
+####sed
+sed options  'command' file or |输入
+options  -e | -n
+command  行定位 + sed命令
+
+options
+-n      一般和打印命令'p'联合使用
+-e      调用两个command
+
+command => p    打印
+sed -n '10,20p'     打印10-20行
+sed -n '10,20!p'     打印10-20行之外的其他行
+sed -n '/pattern/,/pattern/p'     打印两个正则之间行
+sed -n '1~2'        从第一行开始间隔两行打印
+
+command => a    行尾增加一行
+sed '1,5a =='   1到5行尾增加==
+
+command => i    行首增加一行
+
+
+command => c    替代一行
+
+command => d    删除一行
+
+command => w    写入内容
+sed '1,10w abc' def     将def的前十行写入adc
+
+
+
+command => q    退出sed
+sed '10q'       读到第十行就停止
+
+command => n    跳一行
+
+
+command => s    替换字符串(g代表全局，否则只替换每一行的第一个)
+sed '1,10s/替换前/替换后/g'
+special 
+&               部分重复的替换
+sed 's/abc/abcdef/g' 同 sed 's/abc/&def/g'
+\u              首字符大写
+\U              所有字符大写
+\l              首字符小写
+\L              所有字符小写
+sed 's/abc/\u&/g'
+
+
+sed 's/()()()/\1 \2 \3/'        子表达式对应多个列
+
+{}      执行多个命令
+sed '{command1;comman2}'
+
+
+
+
+####awk
+awk options 'command' file or |
+=>command : 正则 + {操作命令}
+
+内置参数
+$0      表示整个当前行
+$1      表示第一个字段
+$2      表示第二个字段
+分隔符
+-F '符号'(默认为空格)
+awk -F ':' '{print "username:" $1 "uid" $2}' passwd
+
+
+NR      表示行的记录号
+NF      表示以分隔符分割出来的字段的总数
+FILENAME    表示处理的文件名
+
+
+awk -F ':' '{printf("Line:%3s\n", NR)}'
+awk -F ':' '{if ($3>100) print $3}'
+awk -F ':' '/pattern/{print $1}'
+awk -F ':' '$1~/pattern/{print $1}'
+awk -F ':' '$1==100{print$3}'
+
+
+
+command扩展
+BEGIN{ print "start" } pattern{ commands } END{ print "end" }
+
+awk -F ':' 'BEGIN{ print 'username | user_id' }{ print $1 " | " $3 }'
+
+统计当前文件夹下所有文件的大小总和
+ls -l | awk 'BEGIN{ size=0 }{ size+=$5 }END{ print "size is "size }'
+
+统计uid>100的所有用户列表
+awk -F ':' 'BEGIN{ count=0 }{ if($3>100)name[count++]=$3 }END{ for(i=0;i<count;i++) print name[i] $3 }'
+
+统计netstat中linsen和connected
+netstat -anp | awk '$6~/LISTEN|CONNECTED/{ count[$6]++ }END{ for(i in count) print(i count[i]) }'

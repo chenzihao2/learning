@@ -1,0 +1,45 @@
+主从
+
+#cmd
+slaveof  同步(会将master的数据都复制过来)
+slaveof no one 取消同步
+
+#config
+slaveof ip port
+slave-read-only yes //只执行读的操作
+
+
+
+
+
+
+#1issue
+
+主从配置一致性问题
+
+规避全量复制(主从节点之间通过runid的匹配来判断是否进行全量复制， 每次重启runid都会改变)
+
+
+
+
+
+
+
+
+
+
+#故障
+当master节点挂掉之后， 选一个slave作为主节点
+
+
+
+
+
+
+
+depend rdb
+
+
+查看当前节点主从配置
+config get slaveof
+info Replication

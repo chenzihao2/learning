@@ -1,0 +1,11 @@
+redis sentinel(哨兵)
+
+作用： 
+为客户端提供数据，客户端不在直接访问redis实例
+当master挂掉时会自动选举一个slave成为master,  当挂掉的master重新恢复的时候会将其转化为slave
+故障转移
+
+
+
+
+

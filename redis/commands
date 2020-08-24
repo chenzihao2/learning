@@ -1,0 +1,96 @@
+####通用命令
+keys [pattern]        遍历所有的键
+dbsize                算出key的总数 
+exists [key]          检查key是否存在
+del [key]             删除key
+expire key 30s        在多少秒之后过期
+ttl key               获取剩余过期时间
+persist key           去掉key的过期时间(不过期)
+type                  返回key的类型
+
+
+
+####字符串
+get     key
+set     key
+setnx   key         如果key存在则创建失败
+incr    key         自增1
+decr    key         自减1
+incrby  key 10      自增10
+decrby  key 10      自减10
+
+
+
+####hash
+key     field   value
+        field   value
+        field   value
+
+hget    key     field
+hset    key     field
+hdel    key     field
+hexists key     field
+hlen    key     获取长度
+hmget   key     field1 field2   获取多个field
+hmset   key     field1 value1 field2 value2   设置多个field
+hincrby key     field   10      增加10
+hgetall key     获取所有的field和value
+hvals   key     获取所有的value
+hkeys   key     获取所有的field
+
+
+
+####list => queue stack
+key     elements
+key1    a-b-c-d-e-f
+
+rpush   key v1 v2 v3    右边插入多个元素
+lpush   key v1 v2 v3    左边插入多个元素
+linsert key before|after    value newvalue  在value之前或者之后加入newValue
+lpop    key             左边弹出一个元素
+rpop    key             右边弹出一个元素
+lrem    key     count   value   从左边开始删除count个值为value的元素
+ltrim   key     start   end     保留下标索引从start到end之间的元素
+lrange  key     start   end     展示从start到end之间的元素 包含end
+lindex  key     index           取下标为index的元素
+llen    key                     获取长度
+lset    key     index   newValue修改下标为index的元素的值
+
+blpop   key     timeout 等待时间弹出元素
+
+
+
+####set(不重复 无序  集合间操作) => 抽奖，点赞，点踩
+sadd    key     element 增加元素
+sdel    key     element 删除元素
+scard   key             计算集合大小
+smembers    key         获取集合中的所有元素
+spop    key             弹出一个集合中的元素
+
+sdiff   set1 set2       获取差集
+sinter   set1 set2       获取并集
+sunion   set1 set2       获取全部
+
+
+####sortd set(有序集合) => 排行榜
+key     score   value
+        score   value
+        score   value
+        score   value
+
+zadd    key     score element(可以多个, score可以重复) 
+zrem    key     element     删除
+zscore  key     element     获取分数
+zincrby key     increScore  element     给元素自增一定的分数
+zcard   key     返回元素总共个数
+zrank   key     element     获取某个元素的排名(小到大, 同分的后加入的排名靠前)
+zrange  key     start   end [withsocres]    按照指定索引范围内的升序元素[是否包含分值]
+zrangebyscore   key min max     获取分值范围内的元素(包含两边)
+zcount   key min max     获取分值范围内的元素个数
+zremrangebyrank     key     start   end     按照排名进行删除
+zremrangebyscore     key    min   max    按照分数进行删除
+
+zrevrank    key     element     倒序(大到小)
+
+
+

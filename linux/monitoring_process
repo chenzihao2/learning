@@ -1,0 +1,105 @@
+####w
+执行w的时间 系统正常运行时间 登录用户数 负载(一分钟，五分钟，十五分钟)
+{
+10:28:25 up 1 day,  9:00,  4 users,  load average: 0.02, 0.03, 0.05
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+chenziha pts/0    10.211.55.2      日15   17:05   2.12s  0.19s sshd: chenzihao [priv]
+chenziha pts/1    10.211.55.2      一10    1.00s  1.24s  0.15s sshd: chenzihao [priv]
+chenziha pts/10   10.211.55.2      一15   41.00s  0.73s  0.18s sshd: chenzihao [priv]
+chenziha pts/11   10.211.55.2      一16   25.00s  1.22s  1.22s -zsh
+}
+IDLE(慵懒的，不活跃的)    多久没有活跃
+JCPU                      累计使用cpu的时间
+PCPU                      当前进程使用cpu的时间
+
+
+
+####uptime
+10:30:15 up 1 day,  9:02,  4 users,  load average: 0.00, 0.02, 0.05
+
+
+
+
+####who 
+查看登录的用户
+
+
+
+####tload
+图形查看系统负载
+
+
+
+
+
+####ps(proccess status) 默认当前用户当前终端的进程
+进程号(process identifier)  进程终端    进程运行了多久
+{
+PID TTY          TIME CMD
+8554 pts/11   00:00:00 ps
+24968 pts/11   00:00:01 zshv
+}
+
+-ef 列出所有进程
+UID(user identifier)
+PPID(parent process identifier) 
+
+
+-efH    按照乔木状列出所有进程
+
+-u username     列出该用户的进程
+
+-aux    通过cpu和内存的使用来过滤进程
+%CPU    占用cpu
+%MEM    占用内存
+VSZ     占用的虚拟内存
+RSS     实际使用内存
+-aux --sort -pcpu 按照cpu排序
+-aux --sort -pmem 按照内存排序
+-aux --sort -pcpu,+pmem
+
+
+
+
+####pstree  以树形结构显示进程
+ps -axjf
+
+
+
+
+
+####top 动态进程列表
+u   查看某个用户
+k   结束某个进程
+s   改变每三秒刷新一次
+
+
+
+
+####killall
+killall 程序名  结束该程序
+
+
+进程五种状态
+R   运行，或运行等待队列
+S   sleeping，中断
+T   traced 停止  
+Z   僵死
+D   不可中断
+
+
+<   优先级较高的进程
+N   优先级较低的进程
+s   父进程
+l   多线程
++   后台进程组
+
+
+
+
+
+
+####halt    关闭系统
+####reboot  重启系统
+####shutdown    关机重启 多种操作
+####poweroff    关机

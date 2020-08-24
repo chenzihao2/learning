@@ -1,0 +1,20 @@
+5.7 mysql
+
+ /**下载mysql源安装包 */
+ wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm
+ /** 安装mysql源*/
+ yum localinstall mysql57-community-release-el7-8.noarch.rpm
+
+
+ yum install mysql-community-server
+
+
+ grep 'temporary password' /var/log/mysqld.log         //查看密码
+
+
+ set password for 'root'@'localhost'=password('root'); 设置密码
+
+
+
+ set global validate_password_policy=0; //设置密码策略等级
+set global validate_password_length=4； //设置密码最小长度

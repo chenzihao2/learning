@@ -1,0 +1,9 @@
+.rpm    redhat package manager
+rpm -i xxx.rpm      安装rpm的包
+
+
+alien   将.deb的包转为.rpm的包
+
+
+
+

@@ -8,6 +8,8 @@ linux目录介绍
 /dev    设备文件目录
 /boot   系统引导文件
 /lib    系统运行时用到的公开库文件
+/sbin   system bin
+/var    variable    存放日志居多
 
 
 linux文件类型

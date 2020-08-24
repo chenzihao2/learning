@@ -1,0 +1,20 @@
+control + r  搜索输入过的命令
+
+history 显示输入过的所有命令
+
+! + 编号  运行history中的命令
+
+
+
+
+
+control + l  清屏
+control + d  =  exit
+control + u  删除光标左侧的所有字符
+control + k  删除光标右侧的所有字符
+control + w  删除光标左侧的一个单词
+control + y  粘贴出刚才删掉的内容
+control + z  当前进程转入后台
+
+
+

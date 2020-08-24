@@ -1,0 +1,32 @@
+#连接
+mysql 不支持full join 可以通过 union all 实现
+
+cross join 交叉连接  两个表的记录数相乘
+
+
+mysql不支持 更新的表不能出现在子查询from从句中
+(把子查询当成一个临时表进行join)
+
+#
+case when `condition` then 'doing' else 'doing'  end
+
+
+#查询数据是否重复
+
+select name,count(*) from table group by name having count(*) > 1
+
+
+
+
+#子查询中匹配两个值
+
+1:  left jon (子查询) on a = a and b = b
+
+2:  where(a ,b ) in (子查询)
+
+
+
+#统一属性的多值过滤
+join两次
+
+group by having

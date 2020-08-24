@@ -1,0 +1,47 @@
+Docker(码头工人) 容器引擎
+
+install
+sudo yum install -y yum-utils
+
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+
+sudo yum install docker-ce docker-ce-cli containerd.io
+
+systemctl start docker
+
+docker run hello-world
+
+容器运行
+docker run ....
+
+查看运行起来的容器
+docker ps
+
+端口映射
+-p 3306:3306
+
+数据挂载
+-v 本机path/容器path
+
+进入容器
+docker exec -it id
+
+停止容器
+docker stop id
+
+删除容器
+docker rm id
+
+仓库登录
+docker login
+
+
+镜像构建
+docker build -t name:tag -f 
+
+
+镜像打tag
+docker tag 

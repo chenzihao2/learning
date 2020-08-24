@@ -18,7 +18,7 @@ server {
         include        fastcgi_params;
     }
     location /api {
-     if (!-e $request_filename) {
+        if (!-e $request_filename) {
             rewrite ^(.*)$ /index.php last;
         }
         add_header X-Tracing-Id $tid;

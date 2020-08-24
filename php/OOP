@@ -1,0 +1,79 @@
+####autoload
+
+
+
+
+
+####extends
+
+单继承模式
+
+public      可继承，可访问
+protected   可继承，可类内部访问(不能通过实例化对象方式访问)
+private     不可被继承
+
+#parent
+子类访问父类同名方法
+防止父类方法被子类重载
+子类内 parent::function();
+
+####::(范围操作符)
+直接调用静态类属性或者方法或者常量
+calss::constname
+
+
+####static(静态)
+静态变量属于类，但是不属于实例, 静态变量对所有实例都有效
+
+
+####匿名类(php7新增)
+new class{
+
+}
+
+
+####trait
+trait traitclass{ }通过use traitclass 实现代码的复用
+
+
+
+####构造函数
+__construct  ||  函数名和类名一致时也是构造函数
+
+
+
+####abstract 抽象类(至少包含一个抽象方法)
+抽象方法没有方法体
+抽象类只能被继承，不能被实例化
+抽象方法必须被重写
+
+
+####interface 接口(抽象类的一种)
+全部为抽象方法
+抽象方法不用加abstract
+接口抽象方法属性为public
+成员属性必须为常量
+
+一个类可以继承多个接口，关键字  implements interface1, interface2, interface3
+
+
+####final 
+类不能再被继承
+方法不能再被重载
+
+
+####clone
+$newclass = clone oldclass(); (此时会调用__clone())
+
+
+####magic_function
+__get($name)    访问不存在或者不能访问的属性时调用
+__set($name, $value)    设置不存在或者不能访问的属性的值的时候调用
+__toString()   直接输出实例化出来的对象的时候回调用此方法(必须有返回值)
+__call()        当访问的方法不存在的时候调用
+__callStatic()        当访问的静态方法不存在的时候调用
+__invoke()      当实例化的对象被当做函数调用的时候会调用此方法
+__sleep()
+__wakeup()
+__isset()       当对不可访问属性调用isset()或者empty()时 调用
+__unset()       当对不可访问属性调用unset()时 调用

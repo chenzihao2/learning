@@ -1,0 +1,28 @@
+#分布
+
+哈希分布  ||   顺序分布
+
+
+#哈希分区
+
+节点取余
+对id进行hash 然后对 节点数 进行取余( 多倍扩容数据迁移)
+
+
+
+一致性哈希
+
+
+虚拟槽分配（redis cluster）
+
+
+
+
+config
+cluster-enable  yes 开启cluster
+cluster-node-timeout    15000 超时时间
+cluster-config-file "nodes.conf" 配置文件
+cluster-require-full-coverage yes | no  是否有一台挂了就全挂
+
+
+创建节点 -> 节点meet -> 分配槽 ->  节点主从复制

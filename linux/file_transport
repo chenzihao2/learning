@@ -1,0 +1,27 @@
+####wget    下载文件
+-c      中断后  继续下载
+wget -P path url    下载至指定目录
+wget url -O new_filename    下载并重新命名
+
+
+
+
+
+####scp     secure copy
+-P 端口
+
+
+
+
+
+
+####sftp
+sftp username@ip
+get file    获取文件
+put file    上传文件
+
+
+
+
+
+####rsync

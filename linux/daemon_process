@@ -1,0 +1,26 @@
+父进程pid为1
+只有在系统关闭是才会关闭的进程
+systemd ssh httpd crond
+
+
+新版linux pid为1的进程为 systemd
+systemctl do unit   (ctl = control)
+
+systemctl 不加参数 可以查看所有单元
+systemctl list-units --type=service 查看所有的服务单元
+systemctl cat nginx 查看nginx服务文件所在位置
+
+systemctl daemon-reload 重载systemd
+
+
+journalctl  日志管理
+-b          显示自上次系统启动起来的日志
+-u  nginx.service   只显示对呀unit的日志
+
+
+
+systemd-analyze     查看系统启动耗时
+systemd-analyze blame   查看各个服务单元启动耗时
+
+systemctl disable unit  禁止开机启动
+systemctl mask unit     强制禁止开机启动某些服务

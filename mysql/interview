@@ -1,0 +1,133 @@
+mysql 5.7 -> 8.0
+
+8.0
+系统表也用innodb
+支持不可见索引和降序索引
+支持窗口参数
+支持在线修改全局持久化
+表结构修改操作支持原子性
+
+
+
+
+
+
+
+用户名@ip (%代表所有 不包含localhost)
+
+
+sql_mode =   mysql处理sql的方式
+max_connections = 2000 mysql的最大连接数
+interactive_time       交互的超时时间
+wait_timeout            非交互连接的时间
+max_allowed_packet      可以接收的数据包的大小
+sync_binlog             每写多少次想磁盘同步一次binlog
+
+
+
+日志
+error_log           启动运行停止时出现的问题(初始化之后的密码)
+general_log         记录发向mysql的请求(大)
+slow_query_log      慢查询日志
+binary_log          全部有效的数据修改日志
+relay_log           中继日志
+
+
+myisam
+
+多读少写场景
+不使用事务场景
+
+
+####什么情况下innodb无法在线修改表
+加索引
+删除主键
+增加自增列
+修改列类型
+修改字符集
+
+####如何在线修改
+pt-online_schema-change --alter = "add column ";(创建一个新表，修改新表的结构，然后把数据倒入到新表)
+
+
+
+
+####innodb如何实现事务
+undo log(回滚日志)   用于记录修改前的状态     实现原子性
+redo log(重做日志)   用于记录修改后的状态     实现一致性
+锁                   用于资源隔离             实现隔离性
+
+
+####innodb读是否会阻塞写
+不会阻塞
+innodb 会暂时将写操作记录到undo log中 待读锁释放之后进行更新操作；
+如果写的时候进行读操作， 则在写锁释放之前会读到写之前的数据;
+
+
+
+####mysql主从复制实现的原理
+异步复制
+master 开启Binary_log
+slave  读取master的binary_log到relay_log中
+slave  读取relay_log并执行
+
+
+
+####开启主从复制过程
+master开启binlog 开启gtid
+建立用于主从复制的数据库账号
+备份master数据库
+slave开启binlog开启gtid(可选)
+slave导入master数据库
+change master 配置
+start slave 启动复制
+
+
+####比较基于gtid和基于日志点复制
+
+日志点
+传统的主从复制，主从复制依赖于日志偏移量, 配置主从时需要指定偏移参数
+兼容性好
+主备切换后难找到新的同步点
+
+gtid(全局事务id)
+主从复制依赖于未同步的gtid
+不兼容旧版本的mysql和mariaDB
+
+
+####MMM架构和MHA架构
+作用
+健康监控
+master宕机之后迁移到新的master
+虚拟ip迁移
+重新配置主从同步
+
+MMM
+主备架构
+只能基于日志点复制
+
+MHA
+一主多从
+选举最新的slave成为master
+
+
+
+####如何减少主从复制延迟
+避免大事务(大化小)
+pt-online-schema-change进行大的数据库结构操作
+合理控制同一master的slave的个数
+(主是多线程写入， 从是单线程同步)
+
+
+
+####如何解决数据库读写负载大的问题
+读
+读写分离
+写 
+分库分表
+
+
+QPS         每秒处理的请求数量
+TPS         每秒处理的事务数量
+并发数      当前并行处理的会话数量
+连接数      当前连接的数量

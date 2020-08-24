@@ -1,7 +1,10 @@
 nginx 变量
-
-
 只能存放字符串
+
+####http请求变量
+arg_PARAMETER   请求参数 例如 arg_name
+http_HEADER     请求头参数  例如 httlp_user_agent
+send_http_HEADER    返回头参数
 
 
 
@@ -33,3 +36,11 @@ http {
 $uri  获取当前请求的uri 解码且不含参数
 $request_uri  获取请求最原始的uri
 $arg_xxx  获取请求参数的值
+$remote_addr        客户端地址
+$time_local         nginx本地时间
+$request            http请求行
+$status             返回状态
+$body_bytes_sent    返回body大小
+$http_referer       上级页面
+$http_user_agent    user_agent
+$http_x_forwarded_for   一些代理信息  

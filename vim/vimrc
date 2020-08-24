@@ -17,7 +17,9 @@ let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 
 syntax on           "语法高亮
 set nu              "显示行号
-colorscheme cobalt        "设置主题
+"colorscheme cobalt        "设置主题
+colorscheme gruvbox        "设置主题
+set bg=dark
 set cursorline
 highlight CursorLine  cterm=NONE ctermbg=black ctermfg=NONE guibg=green guifg=green"高亮当前行
 set whichwrap+=<,>,h,l "允许backspace和光标键跨越行边界
@@ -139,3 +141,24 @@ map php  :call CheckSyntax()<CR>
 
 set pastetoggle=<F1> "粘贴模式开关
 map <F5> :!npm run build <CR>
+
+
+
+
+
+
+
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-startify'
+Plug 'joom/vim-commentary'
+Plug 'stanangeloff/php.vim'
+Plug 'junegunn/fzf'
+
+" Initialize plugin system
+call plug#end()
+

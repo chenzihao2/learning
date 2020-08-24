@@ -1,0 +1,60 @@
+$$$$error type
+1   syntax error
+        deprecated error    不推荐
+        notice  error       通知级别错误
+        warning error       警告级别
+        fatal   error       致命错误
+        parse   error       语法解析错误，上下都执行不了
+2   environment error
+
+
+
+
+
+
+$$$$php error config
+error_reporting     设置显示错误级别(E_ALL & ~E_DEPRECATED & ~E_STRICT 显示所有的错误类型除了E_DEPRECATED和E_STRICT)
+display_errors      显示错误 (on显示/off不显示)
+log_errors			开启错误日志 on/off
+error_log           错误日志路径
+
+$$$$some related function
+手动抛出错误
+trigger_error('content', 1);
+
+
+
+
+记录错误日志
+error_log('content', 1, email_address);
+    0 => 记录在系统日志文件中
+    1 => 发送邮件
+    3 => 记录信息至文件
+
+
+
+
+
+设置用户自定义的错误处理函数 (优先此定义函数，return false 后系统内置函数)
+function deal_error($errno, $error_content) {
+    do something;
+}
+set_error_handler('deal_error', E_USER_ERROR)  //如果是类下面的方法第一个参数传入数组[classname, functionname]
+
+
+
+//注册当程序终止之前执行的一个函数
+register_shutdown_function([class, function])
+
+
+
+
+
+$$$$exception
+自定义异常处理器
+set_exception_handler()
+
+
+
+
+
