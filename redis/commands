@@ -72,7 +72,7 @@ sinter   set1 set2       获取并集
 sunion   set1 set2       获取全部
 
 
-####sortd set(有序集合) => 排行榜
+####sortd set(有序集合) => 排行榜 ,延时队列
 key     score   value
         score   value
         score   value

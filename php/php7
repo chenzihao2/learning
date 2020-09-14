@@ -1,0 +1,9 @@
+####php7新特性
+<=>                 小于返回 -1 等于返回0 大于返回1
+类型声明(declare(strict_types=1))
+null合并操作符      isset($a) ? $a : 0; ===   isset($a) ?? 0
+常量数组            define(A, [1, 2 ,3])
+namespace批量导入   use  Namespace\{class1,class2}
+throwable           可以捕获php致命错误
+intdiv(10,3)
+抽象语法树(解析语法更智能)

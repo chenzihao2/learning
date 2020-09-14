@@ -1,0 +1,74 @@
+
+blob/text存在的表查询时会产生临时表，性能较差
+
+timestamp比datetime空间效率更高
+
+
+sql \c      取消执行当前sql
+
+5.1版本之前默认引擎 MyISAM  表存储在两个文件
+
+
+存储过程    一条或者多条的mysql语句集合，业务逻辑和流程的集合
+
+
+触发器      实时监控某些更改而做出相应的处理，然而滥用会造成数据库维护困难
+
+普通索引    基本的索引，没有任何约束限制
+唯一索引    与普通索引类似，但是具有唯一性约束(可以有多个)
+主键索引    特殊的唯一索引，不允许有空值(只能有一个)
+组合索引    索引覆盖多个列
+外键索引    保证数据一致性完整性和实现联级操作，only innodb
+全文索引    只能对英文进行全文索引  only myisam
+
+索引原则->where子句的列，字符串列指定前缀长度
+
+like 'wang%'    可以使用到全文索引
+column is null  可以使用到索引
+a or b          如果a有索引但是b没有 索引不会被用到
+字符串列必须加引号
+
+
+联表更新
+update a,b set a.c1 = b.c1,a.c2 = b.c2 where a.id = b.id and b.id > 50
+
+update a left join b on a.id = b,id set a.c1 = b.c1, a.c2 = b.c2 where b.id > 50
+
+
+内连接
+等值连接    on a.id = b.id
+不等值连接  on a.id > b.id
+自连接      select * from a a1 inner join a a2 on a1.id = a2.id
+
+
+show profiles
+
+show profile for query 1
+查看sql到底慢在哪里
+
+
+show processlist
+显示目前的线程状态
+
+一个复杂的查询分解成小的查询
+mysql内部每秒可以扫描内存中上百万行的数据，相比下，慢在响应给客户端，所以少的查询是好的
+
+适当分解关联查询
+on 列上面有索引
+尽量少使用子查询
+
+count(*) > count(column)
+建立统计表
+
+group by | order by 尽量一个表中的列
+
+
+limit 偏移量大的时候记录上次的最大id
+
+安全
+预处理防止sql注入(预解析语句，？中的sql语句不会再被解析)
+特殊字符转义
+错误信息不要返回
+权限管理
+关闭远程访问
+定期备份

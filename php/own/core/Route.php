@@ -13,7 +13,7 @@ class Route {
             $path[] = 'index';
             $path[] = 'index';
         }
-        d($path);
+        //d($path);
         echo 'this is route';
     }
 }

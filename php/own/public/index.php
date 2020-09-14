@@ -13,7 +13,7 @@ include CORE . '/helper.php';
 
 spl_autoload_register(['core\Core', 'load']);
 
-//core\Core::run();
+core\Core::run();
 
 new core\Route;
 

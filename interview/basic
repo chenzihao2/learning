@@ -18,3 +18,18 @@ EOT
 for     只能循环索引数据
 foreach()    每次循环都会把指针reset
 while list()each()  不会reset指针
+
+
+
+function arr_merge() {
+    $return = [];
+    $params = func_get_args();//获取所有的参数
+    foreach ($params as $item) {
+        if (is_array($item)) {
+            foreach ($item as $v) {
+                $return[] = $v;
+            }
+        }
+    }
+    return $return;
+}

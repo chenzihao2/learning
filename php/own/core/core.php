@@ -22,4 +22,9 @@ class Core {
             return false;
         }
     }
+
+    public function parents() {
+        $a = 'this is parents';
+        return $a;
+    }
 }

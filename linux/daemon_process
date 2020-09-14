@@ -15,7 +15,7 @@ systemctl daemon-reload 重载systemd
 
 journalctl  日志管理
 -b          显示自上次系统启动起来的日志
--u  nginx.service   只显示对呀unit的日志
+-u  nginx.service   只显示对应unit的日志
 
 
 
